@@ -14,6 +14,9 @@ const config: Config = {
                 DEFAULT: "#000",
                 100: "#0d1b2a"
             },
+            bg:{
+                main: "#00af9c"
+            },
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

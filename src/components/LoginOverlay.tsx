@@ -5,6 +5,7 @@ const LoginOverlay = () => {
   return (
     <div>
         <Image
+            priority
             className="absolute -z-10 -hue-rotate-[43deg]  bottom-0 right-0 md:hidden object-cover    min-w-screen lg:hidden  self-center"
             alt="bottom wave"
             src={"/BottomWave.svg"}
@@ -12,6 +13,7 @@ const LoginOverlay = () => {
             height={20}
         />
         <Image
+            priority
             className="absolute -z-10 -hue-rotate-[43deg]  top-0 left-0 rotate-180  md:hidden object-cover  min-w-screen lg:hidden self-center"
             alt="bottom wave"
             src={"/BottomWave.svg"}
