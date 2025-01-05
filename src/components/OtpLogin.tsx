@@ -35,49 +35,52 @@ const OtpLogin = () => {
    const requestOtp = async(e ?: FormEvent<HTMLFormElement>) => {
     e?.preventDefault()
     setResendCountdown(60)
-    startTransition(async () => {
-        setError("")
-        if(!recaptchaVerifier){
-            setError("RecaptchaVerifier is not initialized")
-        }
-        try {
-            for (let i = 0; i < 60; i++) {
-                console.log("hello world");
-                await new Promise(resolve => setTimeout(resolve, 1000));
-            }
 
-        } catch (error: any) {
-            console.error(error);
-        }
-    })
     // startTransition(async () => {
     //     setError("")
     //     if(!recaptchaVerifier){
     //         setError("RecaptchaVerifier is not initialized")
     //     }
     //     try {
-    //         const confirmationResult = await signInWithPhoneNumber(
-    //             auth,
-    //             phoneNumber,
-    //             recaptchaVerifier!
-    //         )
-    //         setConfirmationResult(confirmationResult)
-    //         setSuccess("OTP Sent Successfully.")
+    //         for (let i = 0; i < 60; i++) {
+    //             console.log("hello world");
+    //             await new Promise(resolve => setTimeout(resolve, 1000));
+    //         }
+
     //     } catch (error: any) {
     //         console.error(error);
-    //         setResendCountdown(0)
-
-    //         if(error.code === "auth/invalid-phone-number") {
-    //             setError("Invalid Phone Number. Please Check the Number!")
-    //         } else if (error.code === "auth/too-many-requests") {
-    //             setError("Too many requests. Please try again later.")
-    //         }else if (error.code === "auth/billing-not-enabled") {
-    //             setError("You are on free plan. Atleast enable billing.")
-    //         } else {
-    //             setError("Failed to send the OTP. Please try again.")
-    //         }
     //     }
     // })
+
+    startTransition(async () => {
+        setError("")
+        if(!recaptchaVerifier){
+            setError("RecaptchaVerifier is not initialized")
+        }
+        try {
+            const confirmationResult = await signInWithPhoneNumber(
+                auth,
+                phoneNumber,
+                recaptchaVerifier!
+            )
+            setConfirmationResult(confirmationResult)
+            setSuccess("OTP Sent Successfully.")
+        } catch (error: any) {
+            console.error(error);
+            setResendCountdown(0)
+
+            if(error.code === "auth/invalid-phone-number") {
+                setError("Invalid Phone Number. Please Check the Number!")
+            } else if (error.code === "auth/too-many-requests") {
+                setError("Too many requests. Please try again later.")
+            }else if (error.code === "auth/billing-not-enabled") {
+                setError("You are on free plan. Atleast enable billing.")
+            } else {
+                setError("Failed to send the OTP. Please try again.")
+            }
+        }
+    })
+    
    }
 
    const loadingIndicator = (
