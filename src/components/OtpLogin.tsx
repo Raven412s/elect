@@ -16,7 +16,7 @@ const OtpLogin = () => {
     const [resendCountdown, setResendCountdown] = useState(0)
     const [recaptchaVerifier, setRecaptchaVerifier] = useState<RecaptchaVerifier | null>(null)
     const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null)
-    const [isPending, startTransition] = useTransition(true)
+    const [isPending, startTransition] = useTransition()
 
    useEffect(() => {
      let timer : NodeJS.Timeout;
