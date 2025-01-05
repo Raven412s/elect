@@ -73,14 +73,16 @@ const OtpLogin = () => {
                 setError("Invalid Phone Number. Please Check the Number!")
             } else if (error.code === "auth/too-many-requests") {
                 setError("Too many requests. Please try again later.")
-            }else if (error.code === "auth/billing-not-enabled") {
-                setError("You are on free plan. Atleast enable billing.")
-            } else {
+            }
+            // else if (error.code === "auth/billing-not-enabled") {
+            //     setError("You are on free plan. Atleast enable billing.")
+            // }
+             else {
                 setError("Failed to send the OTP. Please try again.")
             }
         }
     })
-    
+
    }
 
    const loadingIndicator = (
@@ -111,15 +113,15 @@ const OtpLogin = () => {
             <p className='text-black-100 text-lg underline-offset-2 underline mb-5 lg:text-3xl '>Enter the 6 digit OTP</p>
             <InputOTP maxLength={6} value={otp} onChange={(value)=> setOtp(value)} className='mt-5 '>
                 <InputOTPGroup>
-                    <InputOTPSlot className='md:w-20 md:h-20 lg:w-32 lg:h-32 ' index={0}/>
-                    <InputOTPSlot className='md:w-20 md:h-20 lg:w-32 lg:h-32 ' index={1}/>
-                    <InputOTPSlot className='md:w-20 md:h-20 lg:w-32 lg:h-32 ' index={2}/>
+                    <InputOTPSlot className='md:w-20 md:h-20 md:text-3xl lg:w-32 lg:h-32 lg:text-6xl ' index={0}/>
+                    <InputOTPSlot className='md:w-20 md:h-20 md:text-3xl lg:w-32 lg:h-32 lg:text-6xl ' index={1}/>
+                    <InputOTPSlot className='md:w-20 md:h-20 md:text-3xl lg:w-32 lg:h-32 lg:text-6xl ' index={2}/>
                 </InputOTPGroup>
                 <InputOTPSeparator/>
                 <InputOTPGroup>
-                    <InputOTPSlot className='md:w-20 md:h-20 lg:w-32 lg:h-32 ' index={3}/>
-                    <InputOTPSlot className='md:w-20 md:h-20 lg:w-32 lg:h-32 ' index={4}/>
-                    <InputOTPSlot className='md:w-20 md:h-20 lg:w-32 lg:h-32 ' index={5}/>
+                    <InputOTPSlot className='md:w-20 md:h-20 md:text-3xl lg:w-32 lg:h-32 lg:text-6xl ' index={3}/>
+                    <InputOTPSlot className='md:w-20 md:h-20 md:text-3xl lg:w-32 lg:h-32 lg:text-6xl ' index={4}/>
+                    <InputOTPSlot className='md:w-20 md:h-20 md:text-3xl lg:w-32 lg:h-32 lg:text-6xl ' index={5}/>
                 </InputOTPGroup>
             </InputOTP>
             <p className='text-xs lg:text-2xl lg:mt-10 text-muted-foreground mt-2 text-center md:text-lg'>
